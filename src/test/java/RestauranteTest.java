@@ -8,9 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RestauranteTest {
     Restaurante restaurante;
-    Garcom garcom1;
-    Garcom garcom2;
-    Garcom garcom3;
+    Garcom garcom1, garcom2, garcom3;
+    Chef chef;
 
     @BeforeEach
     void setup(){
@@ -18,10 +17,18 @@ class RestauranteTest {
         garcom1 = new Garcom();
         garcom2 = new Garcom();
         garcom3 = new Garcom();
+        chef = new Chef();
+
 
         garcom1.setSalarioBase(100.0f);
         garcom2.setSalarioBase(100.0f);
         garcom3.setSalarioBase(100.0f);
+
+        chef.setSalarioBase(1000);
+        chef.setBonusMaximo(1000);
+        chef.adicionarNota(7.0f);
+        chef.adicionarNota(8.0f);
+        chef.adicionarNota(9.0f);
     }
 
     @Test
@@ -41,12 +48,13 @@ class RestauranteTest {
         restaurante.fazerPedido(garcom2, cliente, comanda);
         restaurante.fazerPedido(garcom3, cliente, comanda);
 
-        List<Funcionario> garcons= new ArrayList<>();
-        garcons.add(garcom1);
-        garcons.add(garcom2);
-        garcons.add(garcom3);
+        List<Funcionario> funcionarios= new ArrayList<>();
+        funcionarios.add(garcom1);
+        funcionarios.add(garcom2);
+        funcionarios.add(garcom3);
+        funcionarios.add(chef);
 
-        assertEquals(306.0f, restaurante.calcularFolhaPagamento(garcons));
+        assertEquals(1800.0f + 306.0f, restaurante.calcularFolhaPagamento(funcionarios));
 
     }
 
@@ -58,12 +66,14 @@ class RestauranteTest {
         restaurante.fazerPedido(garcom2, cliente, comanda);
         restaurante.fazerPedido(garcom3, cliente, comanda);
 
-        List<Funcionario> garcons= new ArrayList<>();
-        garcons.add(garcom1);
-        garcons.add(garcom2);
-        garcons.add(garcom3);
-        restaurante.calcularFolhaPagamento(garcons);
-        assertEquals(-276.0f, restaurante.calcularBalancoFinanceiro());
+        List<Funcionario> funcionarios= new ArrayList<>();
+        funcionarios.add(garcom1);
+        funcionarios.add(garcom2);
+        funcionarios.add(garcom3);
+        funcionarios.add(chef);
+        restaurante.calcularFolhaPagamento(funcionarios);
+
+        assertEquals(30.0f -306.0f - 1800.0f, restaurante.calcularBalancoFinanceiro());
 
     }
 }
