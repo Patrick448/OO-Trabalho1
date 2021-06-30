@@ -13,6 +13,20 @@ class GarcomTest {
     }
 
     @Test
+    void deveRetornarNome(){
+        garcom.setNome("João da Silva");
+        assertEquals("João da Silva", garcom.getNome());
+
+    }
+
+    @Test
+    void deveRetornarSalarioBase(){
+        garcom.setSalarioBase(500.0f);
+        assertEquals(500.0f, garcom.getSalarioBase());
+
+    }
+
+    @Test
     void deveRetornarComissao(){
         garcom.adicionarComissao(50);
         garcom.adicionarComissao(20);

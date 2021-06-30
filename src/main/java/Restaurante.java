@@ -17,9 +17,9 @@ public class Restaurante {
         this.caixa = caixa;
     }
 
-    public void fazerPedido(Garcom garcom, Cliente cliente, Comanda comanda){
-        float comissao = comanda.calcularComissao();
-        float valorComanda = comanda.calcularValorTotal();
+    public void fazerPedido(Garcom garcom, Cliente cliente, Pedido pedido){
+        float comissao = pedido.calcularComissao();
+        float valorComanda = pedido.getValor();
         garcom.adicionarComissao(comissao);
         cliente.adicionarValorPedido(valorComanda);
 

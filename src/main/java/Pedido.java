@@ -1,13 +1,13 @@
 import java.util.List;
 
-public class Comanda {
+public class Pedido {
     private float valor;
 
-    public Comanda(float valor) {
+    public Pedido(float valor) {
         this.valor = valor;
     }
 
-    public float calcularValorTotal(){
+    public float getValor(){
         return this.valor;
     }
     public float calcularComissao(){

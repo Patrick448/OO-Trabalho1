@@ -36,19 +36,22 @@ class RestauranteTest {
     @Test
     void deveRetornarCaixa() {
         Cliente cliente = new Cliente("Joao da Silva Pereira", 1);
-        Comanda comanda = new Comanda(10.0f);
-        restaurante.fazerPedido(garcom1, cliente, comanda);
+        Pedido pedido = new Pedido(10.0f);
+        restaurante.fazerPedido(garcom1, cliente, pedido);
 
         assertEquals(10.0f, restaurante.getCaixa());
+
+        restaurante.setCaixa(1000.0f);
+        assertEquals(1000.0f, restaurante.getCaixa());
     }
 
     @Test
     void deveRetornarFolhaPagamento(){
         Cliente cliente = new Cliente("Joao da Silva Pereira", 1);
-        Comanda comanda = new Comanda(10.0f);
-        restaurante.fazerPedido(garcom1, cliente, comanda);
-        restaurante.fazerPedido(garcom2, cliente, comanda);
-        restaurante.fazerPedido(garcom3, cliente, comanda);
+        Pedido pedido = new Pedido(10.0f);
+        restaurante.fazerPedido(garcom1, cliente, pedido);
+        restaurante.fazerPedido(garcom2, cliente, pedido);
+        restaurante.fazerPedido(garcom3, cliente, pedido);
 
         List<Funcionario> funcionarios= new ArrayList<>();
         funcionarios.add(garcom1);
@@ -63,10 +66,10 @@ class RestauranteTest {
     @Test
     void deveRetornarBalancoFinanceiro(){
         Cliente cliente = new Cliente("Joao da Silva Pereira", 1);
-        Comanda comanda = new Comanda(10.0f);
-        restaurante.fazerPedido(garcom1, cliente, comanda);
-        restaurante.fazerPedido(garcom2, cliente, comanda);
-        restaurante.fazerPedido(garcom3, cliente, comanda);
+        Pedido pedido = new Pedido(10.0f);
+        restaurante.fazerPedido(garcom1, cliente, pedido);
+        restaurante.fazerPedido(garcom2, cliente, pedido);
+        restaurante.fazerPedido(garcom3, cliente, pedido);
 
         List<Funcionario> funcionarios= new ArrayList<>();
         funcionarios.add(garcom1);

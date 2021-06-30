@@ -17,6 +17,11 @@ class ChefTest {
     }
 
     @Test
+    void deveRetornarBonusMaximo() {
+        assertEquals(1000.0f, chef.getBonusMaximo());
+    }
+
+    @Test
     void deveRetornarNotas() {
         chef.adicionarNota(7.0f);
         chef.adicionarNota(8.0f);

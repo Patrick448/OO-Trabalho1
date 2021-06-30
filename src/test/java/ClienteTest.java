@@ -17,5 +17,10 @@ class ClienteTest {
     void deveRetornarMesa() {
         Cliente cliente = new Cliente("Juliana", 1);
         assertEquals(1, cliente.getMesa());
+
+        cliente.setMesa(2);
+        assertEquals(2, cliente.getMesa());
     }
+
+
 }
